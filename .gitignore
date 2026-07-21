@@ -1,13 +1,20 @@
+# Dependencies
 node_modules
 
+# Environment Variables
 .env
 
+# Build
 dist
-
 build
 
-coverage
+# Logs
+logs
+*.log
 
-.vscode/settings.json
-
+# OS Files
 .DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/settings.json
