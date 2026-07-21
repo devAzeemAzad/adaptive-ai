@@ -16,3 +16,14 @@
 
 Current Status:
 Project initialization in progress.
+
+## Step 0.4
+
+- [x] Created vision.md
+- [x] Created elevator-pitch.md
+- [x] Created problem-list.md
+- [x] Defined vision
+- [x] Defined mission
+- [x] Defined MVP
+
+Status: Complete
