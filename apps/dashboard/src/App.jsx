@@ -1,12 +1,11 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <Hero />
-    </div>
+    <MainLayout>
+      <Home />
+    </MainLayout>
   );
 }
 
