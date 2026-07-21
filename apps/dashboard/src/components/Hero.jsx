@@ -1,3 +1,4 @@
+import Button from "./Button";
 function Hero() {
   return (
     <main className="flex flex-col items-center justify-center text-center px-6 py-24">
@@ -13,9 +14,9 @@ function Hero() {
         websites using Artificial Intelligence.
       </p>
 
-      <button className="mt-10 bg-blue-600 text-white px-8 py-4 rounded-xl text-lg hover:bg-blue-700 transition">
+      <Button>
         Get Started
-      </button>
+      </Button>
     </main>
   );
 }
