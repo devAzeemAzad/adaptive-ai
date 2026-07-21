@@ -27,3 +27,12 @@ Project initialization in progress.
 - [x] Defined MVP
 
 Status: Complete
+
+## Step 1.2
+
+- [x] Created apps
+- [x] Created packages
+- [x] Created services
+- [x] Created dashboard
+- [x] Created sdk
+- [x] Created api
