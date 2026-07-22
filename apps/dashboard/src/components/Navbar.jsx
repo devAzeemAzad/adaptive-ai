@@ -1,4 +1,5 @@
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -7,9 +8,11 @@ function Navbar() {
         AdaptiveAI
       </h1>
 
-      <Button>
-        Login
-      </Button>
+      <Link to="/login">
+        <Button>
+          Login
+        </Button>
+      </Link>
     </nav>
   );
 }
