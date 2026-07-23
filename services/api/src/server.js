@@ -1,13 +1,12 @@
-const express = require('express');
+const express = require("express");
+const indexRoutes = require("./routes/index.route");
 
 const app = express();
+
 const PORT = 5000;
 
+app.use("/", indexRoutes);
 
-app.get("/",(req,res)=>{
-    res.send("🚀 AdaptiveAI API is running...");
-});
-
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
