@@ -1,6 +1,44 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+
+  function validate() {
+    const newErrors = {};
+
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+
+    if (!password.trim()) {
+      newErrors.password = "Password is required";
+    } else if (password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+
+    return newErrors;
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const validationErrors = validate();
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      return;
+    }
+
+    console.log({
+      email,
+      password,
+    });
+  }
   return (
     <div className="flex items-center justify-center min-h-[80vh] px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
@@ -12,13 +50,22 @@ function Login() {
           Sign in to your AdaptiveAI account
         </p>
 
-        <form className="mt-8 space-y-5">
-          <Input label="Email" type="email" placeholder="Enter your email" />
-
+        <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+          <Input
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={errors.email}
+          />
           <Input
             label="Password"
             type="password"
             placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            error={errors.password}
           />
 
           <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
