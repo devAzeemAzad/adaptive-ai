@@ -8,7 +8,7 @@ function Navbar() {
         AdaptiveAI
       </h1>
 
-      <Link to="/login">
+      <Link to="api/auth/login">
         <Button>
           Login
         </Button>

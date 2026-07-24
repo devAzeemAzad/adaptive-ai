@@ -11,8 +11,8 @@ function App() {
     <MainLayout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/api/auth/login" element={<Login />} />
+        <Route path="/api/auth/register" element={<Register />} />
       </Routes>
     </MainLayout>
   );

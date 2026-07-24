@@ -23,7 +23,7 @@ function Login() {
 
     return newErrors;
   }
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const validationErrors = validate();
@@ -34,10 +34,21 @@ function Login() {
       return;
     }
 
-    console.log({
-      email,
-      password,
-    });
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      console.log(data);
+      
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
   return (
     <div className="flex items-center justify-center min-h-[80vh] px-4">
