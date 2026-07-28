@@ -1,19 +1,28 @@
+const bcrypt = require("bcrypt");
 const userModel = require('../models/User')
+
+
 
 async function registerUser(req, res) {
   try {
     const { name, email, password } = req.body;
 
-    const user = await userModel.create({
-      name,
-      email,
-      password,
-    });
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+  const user = await userModel.create({
+    name,
+    email,
+    password: hashedPassword,
+  });
 
     res.status(201).json({
       success: true,
       message: "User created successfully",
-      user,
+      user:{
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      }
     });
 
   } catch (error) {
@@ -37,7 +46,9 @@ async function loginUser(req, res) {
       });
     }
 
-    if (user.password !== password) {
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
       return res.status(401).json({
         success: false,
         message: "Invalid password",
